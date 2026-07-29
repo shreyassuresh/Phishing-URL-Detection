@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing URL Detection</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: Arial, sans-serif; background: #f0f2f5; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .card { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); width: 100%; max-width: 500px; }
+        h1 { text-align: center; margin-bottom: 24px; color: #333; font-size: 22px; }
+        input[type="text"] { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 15px; margin-bottom: 16px; }
+        button { width: 100%; padding: 12px; background: #2563eb; color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; }
+        button:hover { background: #1d4ed8; }
+        .result { margin-top: 20px; padding: 14px; border-radius: 8px; text-align: center; font-weight: bold; font-size: 16px; }
+        .phishing { background: #fee2e2; color: #b91c1c; }
+        .legitimate { background: #dcfce7; color: #15803d; }
+        .unknown { background: #fef9c3; color: #854d0e; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>🔍 Phishing URL Detection</h1>
+        <form method="POST">
+            <input type="text" name="url" placeholder="Enter URL (e.g. https://example.com)" required value="{{ request.form.get('url', '') }}">
+            <button type="submit">Check URL</button>
+        </form>
+        {% if prediction %}
+            <div class="result {% if 'Phishing' in prediction %}phishing{% elif 'Legitimate' in prediction %}legitimate{% else %}unknown{% endif %}">
+                {{ prediction }}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
