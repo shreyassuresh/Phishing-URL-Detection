@@ -2,14 +2,6 @@
 
 A machine learning-powered web application that detects whether a URL is **phishing** or **legitimate** — in real time.
 
----
-
-## Demo
-
-![PhishGuard Demo](demo.gif)
-
----
-
 ## What is PhishGuard?
 
 PhishGuard is a cybersecurity tool that uses machine learning to analyze URLs and determine if they are malicious. Instead of visiting a suspicious link and risking your data, just paste it into PhishGuard and get an instant verdict.
